@@ -11,7 +11,9 @@ fi
 # requirements
 apt update > /dev/null
 apt upgrade -y > /dev/null
-apt install ca-certificates apt-transport-https lsb-release curl nano unzip software-properties-common pwgen -y /dev/null
+apt install ca-certificates apt-transport-https lsb-release curl nano software-properties-common pwgen -y /dev/null
+apt update > /dev/null
+apt install unzip -y /dev/null
 
 #apache2
 apt install apache2 -y > /dev/null
@@ -28,7 +30,7 @@ adminPasswordDB=$(pwgen -s 32 1)
 (echo ""; echo "y"; echo rootPasswordDB; echo "y"; echo "y"; echo "y"; echo "y") | mysql_secure_installation
 
 #phpmyadmin
-cd /usr/share
+cd /usr/share/
 wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.zip -O phpmyadmin.zip
 unzip phpmyadmin.zip > /dev/null
 rm phpmyadmin.zip
