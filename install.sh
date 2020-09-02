@@ -53,6 +53,8 @@ a2enconf phpmyadmin.conf
 systemctl restart apache2
 chown -R www-data:www-data /usr/share/phpmyadmin/
 
+(echo ""; echo ""; echo ""; echo ""; echo ""; echo ""; echo "") | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
 echo -e "\033[42mInstall successfull\033[0m"
 echo "DB root password: $rootPasswordDB"
 echo "DB admin password: $adminPasswordDB"
