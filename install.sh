@@ -63,6 +63,14 @@ wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/site
 a2ensite site1.conf
 a2ensite site2.conf
 
+mkdir -p /var/www/php
+cat > index.php <<EOF
+<?php
+phpinfo();
+EOF
+
+systemctl restart apache2
+
 echo -e "\033[42mInstall successfull\033[0m"
 echo "DB root password: $rootPasswordDB"
 echo "DB admin password: $adminPasswordDB"
