@@ -55,6 +55,14 @@ chown -R www-data:www-data /usr/share/phpmyadmin/
 
 (echo ""; echo ""; echo ""; echo ""; echo ""; echo ""; echo "") | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
 
+a2enmod ssl
+a2enmod header
+
+wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/site1.conf -P /etc/apache2/sites-available/
+wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/site2.conf -P /etc/apache2/sites-available/
+a2ensite site1.conf
+a2ensite site2.conf
+
 echo -e "\033[42mInstall successfull\033[0m"
 echo "DB root password: $rootPasswordDB"
 echo "DB admin password: $adminPasswordDB"
