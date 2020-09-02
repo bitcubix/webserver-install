@@ -11,9 +11,9 @@ fi
 # requirements
 apt update > /dev/null
 apt upgrade -y > /dev/null
-apt install ca-certificates apt-transport-https lsb-release curl nano software-properties-common pwgen -y /dev/null
+apt install ca-certificates apt-transport-https lsb-release curl nano software-properties-common -y /dev/null
 apt update > /dev/null
-sudo apt-get install -y unzip
+sudo apt-get install -y unzip pwgen
 
 #apache2
 apt install apache2 -y > /dev/null
