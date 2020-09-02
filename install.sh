@@ -9,22 +9,22 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # requirements
-apt update > /dev/null
-apt upgrade -y > /dev/null
-apt install ca-certificates apt-transport-https lsb-release curl nano software-properties-common -y /dev/null
+apt update
+apt upgrade -y
+apt install ca-certificates apt-transport-https lsb-release curl nano software-properties-common -y
 apt update > /dev/null
 sudo apt-get install -y unzip pwgen
 
 #apache2
-apt install apache2 -y > /dev/null
+apt install apache2 -y
 
 #php7.4
 add-apt-repository ppa:ondrej/php -y
-apt update > /dev/null
-apt install php7.4 php7.4-cli php7.4-curl php7.4-gd php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-readline php7.4-xml php7.4-xsl php7.4-zip php7.4-bz2 libapache2-mod-php7.4 -y > /dev/null
+apt update
+apt install php7.4 php7.4-cli php7.4-curl php7.4-gd php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-readline php7.4-xml php7.4-xsl php7.4-zip php7.4-bz2 libapache2-mod-php7.4 -y
 
 # mariaDB
-apt install mariadb-server -y > /dev/null
+apt install mariadb-server -y
 rootPasswordDB=$(pwgen -s 32 1)
 adminPasswordDB=$(pwgen -s 32 1)
 (echo ""; echo "y"; echo rootPasswordDB; echo "y"; echo "y"; echo "y"; echo "y") | mysql_secure_installation
@@ -32,7 +32,7 @@ adminPasswordDB=$(pwgen -s 32 1)
 #phpmyadmin
 cd /usr/share/
 wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.zip -O phpmyadmin.zip
-unzip phpmyadmin.zip > /dev/null
+unzip phpmyadmin.zip
 rm phpmyadmin.zip
 mv phpMyAdmin-*-all-languages phpmyadmin
 cd phpmyadmin
