@@ -17,7 +17,7 @@ apt install ca-certificates apt-transport-https lsb-release curl nano unzip soft
 apt install apache2 -y > /dev/null
 
 #php7.4
-add-apt-repository ppa:(ondrej/php) -y > /dev/null
+add-apt-repository ppa:ondrej/php -y
 apt update > /dev/null
 apt install php7.4 php7.4-cli php7.4-curl php7.4-gd php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-readline php7.4-xml php7.4-xsl php7.4-zip php7.4-bz2 libapache2-mod-php7.4 -y > /dev/null
 
