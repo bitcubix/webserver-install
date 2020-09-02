@@ -53,5 +53,7 @@ systemctl restart apache2
 chown -R www-data:www-data /usr/share/phpmyadmin/
 
 echo -e "\033[42mInstall successfull\033[0m"
+echo "DB root password: $rootPasswordDB"
+echo "DB admin password: $adminPasswordDB"
 
 exit
