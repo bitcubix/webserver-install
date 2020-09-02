@@ -8,6 +8,8 @@ if [ "$EUID" -ne 0 ]
     exit
 fi
 
+fold=$(pwd)
+
 # requirements
 apt update
 apt upgrade -y
@@ -47,7 +49,7 @@ mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY '$a
 mariadb < sql/create_tables.sql
 chmod -R 0755 phpmyadmin
 mkdir /usr/share/phpmyadmin/tmp/
-wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/phpmyadmin.conf -P /etc/apache2/conf-available/
+cp $fold/phpmyadmin.conf /etc/apache2/conf-available/
 cd /etc/apache2/conf-available/
 a2enconf phpmyadmin.conf
 systemctl restart apache2
@@ -58,13 +60,13 @@ chown -R www-data:www-data /usr/share/phpmyadmin/
 a2enmod ssl
 a2enmod header
 
-wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/site1.conf -P /etc/apache2/sites-available/
-wget https://raw.githubusercontent.com/gabrielix29/webserver-install/master/site2.conf -P /etc/apache2/sites-available/
+cp $fold/site1.conf /etc/apache2/sites-available/
+cp $fold/site2.conf /etc/apache2/sites-available/
 a2ensite site1.conf
 a2ensite site2.conf
 
 mkdir -p /var/www/php
-cat > index.php <<EOF
+cat > /var/www/php/index.php <<EOF
 <?php
 phpinfo();
 EOF
